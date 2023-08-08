@@ -1,0 +1,7 @@
+#Plot missing values for all variables in df
+
+import missingno as msno
+
+# Plot a matrix chart, set chart and font size
+
+msno.matrix(data_all, figsize=(10,5), fontsize=11)
