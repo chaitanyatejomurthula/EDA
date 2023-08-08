@@ -1,0 +1,4 @@
+cols=df.select_dtypes('float').columns.tolist()
+stat1=pd.DataFrame(df[cols].describe(percentiles=(0.1,0.25,0.5,0.75,0.9,0.95,0.99))).T  
+stat1.reset_index(inplace=True)
+stat1=stat1.rename(columns={'index':'variable'})
