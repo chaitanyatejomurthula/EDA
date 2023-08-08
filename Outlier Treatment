@@ -1,0 +1,15 @@
+#Using 1.5 X IQR
+
+df4_t1=df4
+for c in df4_t1.columns:
+    # q1=np.percentile(df4_t1[c],25)
+    # q3=np.percentile(df4_t1[c],75)
+    q1=df4_t1[c].quantile(0.25)
+    q3=df4_t1[c].quantile(0.75)
+    iqr=q3-q1
+    lb=q1-(1.5*iqr)
+    ub=q3+(1.5*iqr)
+    # df4_t1[c] = np.where(df4_t1[c] <lb, lb,df4_t1[c])
+    # df4_t1[c] = np.where(df4_t1[c] >ub, ub,df4_t1[c])
+    df4_t1[c] = np.where(df4_t1[c]>ub,ub,np.where(df4_t1[c]<lb,lb, df4_t1[c]))
+
